@@ -1,0 +1,597 @@
+/* ここから下に記載していく */
+@charset "UTF-8";
+
+/* 共通部分
+---------------------------- */
+html,
+header {
+  max-width: 100vw;
+  font-size: 100%;
+}
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", "YuGothic",
+    "游ゴシック体", "ヒラギノ角ゴ Pro W3", "sans-serif", "sans-serif";
+  line-height: 1.7;
+  color: #222222;
+}
+a {
+  text-decoration: none;
+}
+p {
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+}
+.wrapper {
+  text-align: center;
+}
+.contents {
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  max-width: 100%;
+  margin: 0px 2%;
+}
+.title {
+  font-weight: bold;
+  font-size: 24px;
+}
+.sub-title {
+  margin-bottom: 30px;
+}
+
+/* 共通部分（ヘッダー）
+---------------------------- */
+#home {
+  height: 10vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1000;
+  border-bottom: 1px solid #707070;
+}
+#home a {
+  margin: 0;
+}
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  height: 8vh;
+  padding: 2vh 2vw 0 2vw;
+}
+.logo-area {
+  padding: 0;
+  width: 32vw;
+  max-height: 100%;
+}
+@media (max-width: 600px) {
+  .logo-area {
+    padding: 0;
+    width: 48vw;
+    max-height: 100%;
+  }
+}
+.logo {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+.logo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.space-area {
+  width: 32vw;
+}
+@media (max-width: 600px) {
+  .space-area {
+    display: none;
+  }
+}
+.main-nav {
+  display: flex;
+  justify-content: center;
+  width: 32vw;
+  padding: 2vh 0;
+  font-size: 21px;
+  list-style: none;
+}
+@media (max-width: 600px) {
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    width: 48vw;
+    padding: 1vh;
+    font-size: 18px;
+    list-style: none;
+  }
+}
+.main-nav li {
+  margin-left: 50px;
+}
+@media (max-width: 600px) {
+  .main-nav li {
+    margin-left: 30px;
+  }
+}
+.main-nav a {
+  color: #222222;
+}
+.main-nav a:hover {
+  color: #0bd;
+}
+
+/* 共通部分（ボタン）
+---------------------------- */
+.button {
+  font-size: 20px;
+  background: maroon;
+  color: #fff;
+  padding: 10px 30px;
+  margin: 10px;
+}
+@media (max-width: 600px) {
+  .button {
+    font-size: 20px;
+    background: maroon;
+    color: #fff;
+    padding: 10px 10px;
+    margin: 5px;
+  }
+}
+.button:hover {
+  background: #0090aa;
+}
+.button:disabled {
+  background: #ccc;
+}
+
+/* 共通部分（メインビジュアル）
+---------------------------- */
+#main06 {
+  margin-top: 10vh;
+  background-image: url(../img/travel_102.jpg), linear-gradient(white, #97cdf3);
+  background-color: #e6f0f0;
+  background-blend-mode: hard-light;
+  /* background-size: 80%; 画像を約80%に縮小 */
+  background-repeat: no-repeat; /* 画像を繰り返し表示しない */
+  background-position: center top -70px; /* 画像を中央上に配置（上方向に10px上げる） */
+  height: 250px;
+  color: black;
+  position: relative;
+  min-width: 100vw;
+  background-size: cover;
+  z-index: 100;
+}
+.main-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-title {
+  font-family: "philosopher", serif;
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+@media (max-width: 600px) {
+  .main-title {
+    font-family: "philosopher", serif;
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+}
+.main-content p {
+  font-size: 18px;
+}
+@media (max-width: 600px) {
+  .main-content p {
+    font-size: 15px;
+  }
+}
+
+/* 共通部分（モーダル）
+---------------------------- */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 50%);
+  padding: 40px 20px;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  box-sizing: border-box;
+  z-index: 200;
+}
+.modal-container:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.modal-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-body {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 500px;
+  width: 90%;
+}
+.modal-close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -40px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+.modal-content {
+  background: #fff;
+  text-align: left;
+  padding: 30px;
+}
+
+/* STAY（お気に入りを登録しよう）、gs_bm_table
+---------------------------- */
+.select-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 0 15vw;
+}
+.select-item {
+  /* width: 40vw; */
+  text-align: center;
+  margin: 0 10px;
+}
+#stay .title {
+  color: maroon;
+  margin-bottom: 30px;
+}
+#stay label {
+  vertical-align: middle;
+}
+#stay ul {
+  padding: 0;
+  border-top: 1px solid #000000;
+  display: table; /* 定義 */
+  table-layout: fixed;
+  width: 96%;
+  font-size: 80%;
+  margin: 0 3%;
+  text-align: center;
+}
+#stay li {
+  list-style-type: none;
+  border: 1px solid #666;
+  background-color: #fff;
+  display: table-cell; /* 定義 */
+  cursor: pointer;
+  color: maroon;
+}
+#stay li:hover {
+  background: maroon;
+  color: #fff;
+}
+#post-all {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* gap: 5vw; */
+  padding: 3vw;
+}
+#post-data {
+  padding: 10px;
+}
+#post-data table {
+  width: 100%;
+}
+#post-data img {
+  height: 30vh;
+}
+textarea {
+  height: 100px;
+  background-color: white;
+}
+#post-all td {
+  border-bottom: 1px solid lightgray;
+}
+.left {
+  width: 30%;
+}
+.right {
+  width: 70%;
+}
+#myMap {
+  position: absolute;
+  left: 35vw;
+  width: 60vw;
+  height: 280px;
+}
+.directionsContainer {
+  width: 60vw;
+  background: white;
+  padding-left: 20px;
+  overflow-y: auto;
+}
+
+/* CHAT部分（質問する）、いったんhttps://tech.amefure.com/web-chatのコピペ
+---------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.chat-box {
+  border: 5px solid;
+  width: 80%;
+  margin: 30px auto;
+  background-color: rgba(51, 51, 51, 0.208);
+}
+
+.chat-box #textarea {
+  resize: none;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border-width: 2px;
+  margin: 30px 0;
+  font-size: 2rem;
+}
+
+.send-box {
+  text-align: center;
+  padding: 0 40px;
+}
+
+.chat-area {
+  max-height: 60vh;
+  padding: 30px 60px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chat-area::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+.chat-system input[type="submit"] {
+  display: none;
+}
+*/
+
+.change-person {
+  text-align: center;
+}
+
+.change-person .on {
+  background-color: rgb(230, 196, 83);
+}
+
+.change-person i:hover {
+  font-size: 6rem;
+  transition: all 0.3s;
+  color: rgb(230, 196, 83);
+}
+
+.change-person img,
+.change-person i {
+  transition: all 0.3s;
+  width: 80px;
+  height: 80px;
+  font-size: 5rem;
+  padding: 10px;
+  border: 5px solid #333;
+  border-radius: 50%;
+  line-height: 80px;
+  text-align: center;
+  cursor: pointer;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.send-box label {
+  margin: 30px 0;
+}
+
+/*
+.send-box .far.fa-paper-plane::before {
+  font-size: 3.5rem;
+  line-height: 44px;
+  cursor: pointer;
+  display: inline-block;
+  width: 200px;
+  height: 44px;
+  border: 2px solid;
+  background-color: #fff;
+  text-align: center;
+  vertical-align: bottom;
+  transition: all 0.3s;
+}
+
+.far.fa-paper-plane:hover::before {
+  background-color: rgb(58, 157, 124);
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.second .far.fa-paper-plane:hover::before {
+  background-color: rgb(194, 97, 97);
+}
+*/
+
+.chat-area .person1 {
+  text-align: right;
+  vertical-align: top;
+}
+
+.chat-area .person2 {
+  text-align: left;
+  position: relative;
+}
+
+.second .chat-area .person1 {
+  text-align: left;
+  position: relative;
+}
+
+.second .chat-area .person2 {
+  text-align: right;
+  position: initial;
+}
+
+.chat-area .chat {
+  position: relative;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  display: inline-block;
+  max-width: 300px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.chat-area .chat::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  border-top: #fff solid 15px;
+  border-left: transparent solid 6px;
+  border-right: transparent solid 6px;
+  position: absolute;
+  transform: rotate(-120deg);
+  right: -9px;
+  bottom: 20px;
+}
+
+.chat-area .person2 .chat::after {
+  border-top: #fff solid 15px;
+  border-left: transparent solid 6px;
+  border-right: transparent solid 6px;
+  position: absolute;
+  transform: rotate(120deg);
+  right: initial;
+  left: -9px;
+}
+
+.second .chat-area .chat::after {
+  transform: rotate(120deg);
+  right: initial;
+  left: -9px;
+}
+
+.second .chat-area .person2 .chat::after {
+  transform: rotate(-120deg);
+  left: initial;
+  right: -9px;
+  bottom: 20px;
+}
+
+.chat-area .chat-time {
+  position: absolute;
+  left: -60px;
+}
+
+.chat-area .person2 .chat-time {
+  left: initial;
+  right: -60px;
+}
+
+.second .chat-area .chat-time {
+  left: initial;
+  right: -60px;
+}
+
+.second .chat-area .person2 .chat-time {
+  right: initial;
+  left: -60px;
+}
+
+.chat-area img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  margin: 20px 0;
+  vertical-align: bottom;
+}
+
+.chat-area .person1 img {
+  background-color: aquamarine;
+}
+
+.chat-area .person2 img {
+  background-color: rgb(194, 97, 97);
+}
+
+.chat-area .person2 .chat {
+  margin-left: 80px;
+}
+
+.second .chat-area .chat {
+  margin-left: 80px;
+}
+
+.chat-area .person2 img {
+  position: absolute;
+  left: -10px;
+  bottom: 0px;
+}
+
+.second .chat-area img {
+  position: absolute;
+  left: -10px;
+  bottom: 0px;
+}
+
+.second .chat-area .person2 img {
+  position: initial;
+}
+
+.btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  border: none;
+  background-color: #f5f2f0;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+}
+
+/* フッター
+---------------------------- */
+footer {
+  background: #707070;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+footer p {
+  color: #fff;
+  font-size: 0.875rem;
+}
