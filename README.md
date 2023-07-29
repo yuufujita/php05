@@ -33,4 +33,3 @@
 - 【javascript】シンプルなtableの動的行追加・削除（ボタンクリックで行追加・削除）　https://qiita.com/forever---beginner/items/7901217dc811d72687f8
 - SortableJSを使ってデータの並べ替え&保存　https://taitan916.info/blog/archives/3309
 - SortableJSを使ってみる　https://cly7796.net/blog/javascript/try-using-sortable-js/
-- 
